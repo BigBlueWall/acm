@@ -30,7 +30,7 @@ int remainingSuffixCount = 0;
 int leafEnd = -1;
 int *rootEnd = NULL;
 int *splitEnd = NULL;
-int size = -1; 
+int size = -1;
  
 Node *newNode(int start, int *end)
 {
