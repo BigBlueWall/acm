@@ -65,7 +65,7 @@ int walkDown(Node *currNode)
     return 0;
 }
 
-／*
+/*
 Rule 1: If the path from the root labelled S[j,i] ends at leaf edge,
 		then character S[i+1] is just added to the end of the label on that edge.
 
@@ -77,6 +77,45 @@ Rule 3: If the path from the root labelled S[j,i] ends at non-leaf edge,
 		and next character is S[i+1],
 		then do nothing.
 *／
+
+/*
+Trick 1: Skip/Count Trick.
+
+Trick 2: Stop the processing of any phase as soon as Rule 3 applies. All further extensions are already
+		present in tree implicity.
+
+Trick 3: Maintain a global index e and e will be equal to the index,
+		so now leaf edges will look like (p, e), (q, e), (r,e)..
+		Just increment e and extention on all leaf edges will be done.
+*／
+ 
+/*
+activePoint: This could be root node, any internal node or any point in 
+ 			the middle of an edge.This is the point where traversal starts
+			in any extension.
+
+activePoint is composed of activeNode, activeEdge and activeLength.
+
+activeNode: This could be root node or an internal node.
+activeEdge: This is the edge to choose to walk down.
+activeLength: This tells how many characters we need to walk down.
+*/
+
+/*
+activePoint change for extension rule3(APCFER3):
+	When Rule 3 applies in any phase, then we increment activeLength by 1.
+	There is no change in activeNode and activeEdge.
+
+activePoint change for walk down(APCFWD):
+	At any time, the closest internal node form the point, where we want to reach,
+	should be the activePoint. This will minimize the length of traversal in the next
+	extension.
+	
+activePonit change for Active Length ZERO(APCFALZ):
+	At the start of extension, when activeLength is Zero, activeEdge is set to the 
+	current character being processed.
+*/
+ 
  
 void extendSuffixTree(int pos)
 {
@@ -146,7 +185,7 @@ void extendSuffixTree(int pos)
  
 void print(int i, int j)
 {
-    int k;
+	int k;
     for(k=i; k<=j; k++)
         printf("%c", text[k]);
 }
@@ -154,7 +193,8 @@ void print(int i, int j)
 void setSuffixIndexByDFS(Node *n, int labelHeight)
 {
 	int leaf = 1;
-    int i;
+	int i;
+	
     if(n == NULL)  
     	return;
  
@@ -182,7 +222,7 @@ void setSuffixIndexByDFS(Node *n, int labelHeight)
 void freeSuffixTreeByPostOrder(Node *n)
 {
 	int i;
-
+	
     if(n == NULL)
         return;
 
