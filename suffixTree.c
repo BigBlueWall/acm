@@ -64,6 +64,19 @@ int walkDown(Node *currNode)
     }
     return 0;
 }
+
+／*
+Rule 1: If the path from the root labelled S[j,i] ends at leaf edge,
+		then character S[i+1] is just added to the end of the label on that edge.
+
+Rule 2: If the path from the root labelled S[j,i] ends at non-leaf edge,
+		and next character is not S[i+1], 
+		then a new leaf edge with label S[i+1] and number j is created starting from character S[i+1].
+
+Rule 3: If the path from the root labelled S[j,i] ends at non-leaf edge,
+		and next character is S[i+1],
+		then do nothing.
+*／
  
 void extendSuffixTree(int pos)
 {
