@@ -185,15 +185,15 @@ void extendSuffixTree(int pos)
  
 void print(int i, int j)
 {
-	int k;
+    int k;
     for(k=i; k<=j; k++)
         printf("%c", text[k]);
 }
  
 void setSuffixIndexByDFS(Node *n, int labelHeight)
 {
-	int leaf = 1;
-	int i;
+    int leaf = 1;
+    int i;
 	
     if(n == NULL)  
     	return;
@@ -221,7 +221,7 @@ void setSuffixIndexByDFS(Node *n, int labelHeight)
  
 void freeSuffixTreeByPostOrder(Node *n)
 {
-	int i;
+    int i;
 	
     if(n == NULL)
         return;
@@ -237,7 +237,7 @@ void freeSuffixTreeByPostOrder(Node *n)
  
 void buildSuffixTree()
 {
-	int i;
+    int i;
 
     size = strlen(text);
     rootEnd = (int*) malloc(sizeof(int));
