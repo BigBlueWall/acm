@@ -27,7 +27,7 @@ int getfather(int x)
 {
 	if(x != father[x])
 		father[x] = getfather(father[x]);
-	return father[x];
+	return father[x]; 
 }
 
 int main(int argc, char const *argv[])
