@@ -114,6 +114,13 @@ activePoint change for walk down(APCFWD):
 activePonit change for Active Length ZERO(APCFALZ):
 	At the start of extension, when activeLength is Zero, activeEdge is set to the 
 	current character being processed.
+	
+activePoint change for extension rule 2(APCFER2):
+	Case 1(APCFER2C1): If activeNode is root and activeLength is greater than Zero,
+	then decrement the activeLength by 1 and activeEdge will be set S[i-remainingSuffixCount+1].
+	
+	Case 2(APCFER2C2): If activeNode is not root, then follow the suffix link from current activeNode.
+	No change in activeLength and activeEdge.
 */
  
  
