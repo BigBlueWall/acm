@@ -36,7 +36,7 @@ void trans()
 	newe[j] = 0;
 	for(i = 0; i < j; i++)
 		newData[j-1-i] = newe[i] + (newe[i] <= 9 ? '0' : newe[i] <= 35 ? ('a'-10) : ('A'-36));
-    newData[j] = 0;
+	newData[j] = 0;
 }
 
 int main() 
